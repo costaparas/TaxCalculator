@@ -46,7 +46,7 @@ export class TaxInputComponent implements OnInit {
     this.taxForm = new FormGroup({
       country: new FormControl(null, Validators.required),
       year: new FormControl(null, Validators.required),
-      income: new FormControl(null, Validators.min(0)),
+      income: new FormControl(null, [Validators.required, Validators.min(0)]),
     });
   }
 

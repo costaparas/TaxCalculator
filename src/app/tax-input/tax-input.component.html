@@ -41,7 +41,7 @@
         </mat-form-field>
       </div>
 
-      <button mat-raised-button color="primary" type="submit">Calculate</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="taxForm.invalid">Calculate</button>
     </form>
 
   </div>
