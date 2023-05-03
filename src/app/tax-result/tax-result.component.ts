@@ -16,6 +16,7 @@ export class TaxResultComponent implements OnInit {
     {'low': 120001, 'high': 180000, 'amount': 0},
     {'low': 180001, 'high': Infinity, 'amount': 0},
   ];
+  country: string = 'au';
 
   ngOnInit() {
 
