@@ -11,7 +11,7 @@ interface Year {
   display: string;
 }
 
-interface TaxBracket {
+export interface TaxBracket {
   low: number;
   high: number;
   amount: number;

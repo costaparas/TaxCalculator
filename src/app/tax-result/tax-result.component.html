@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-6">
+    <h1>Your tax results</h1>
+    <div>TODO form</div>
+    <a href="#" (click)="back()">Go back to the previous screen</a>
+  </div>
+  <div class="col-6">
+    Estimated tax on your taxable income:
+    <mat-toolbar>{{ 999999999 | currency }}</mat-toolbar>
+    <hr>
+    Breakdown:
+    <div *ngFor="let bracket of this.taxBrackets; let last = last">
+      <mat-card class="card">
+        <mat-card-header>Tax Bracket<div class="fill"></div>{{ bracket.amount | currency }}</mat-card-header>
+        <mat-card-content>
+          <div *ngIf="!last">{{ bracket.low | currency }} - {{ bracket.high | currency }}</div>
+          <div *ngIf="last">{{ bracket.low | currency }}+</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

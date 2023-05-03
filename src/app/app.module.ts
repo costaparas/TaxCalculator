@@ -14,11 +14,13 @@ import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaxInputComponent } from './tax-input/tax-input.component';
+import { TaxResultComponent } from './tax-result/tax-result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaxInputComponent,
+    TaxResultComponent,
   ],
   imports: [
     BrowserModule,
