@@ -16,7 +16,6 @@ export class TaxInputComponent implements OnInit {
 
   emitTaxInfo(taxInfo: TaxInfo) {
     this.taxInfo.emit(taxInfo);
-    console.log(taxInfo);
   }
 
 }

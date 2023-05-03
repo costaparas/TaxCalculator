@@ -13,7 +13,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
-      'country': 'au',
+      'input': {'country': 'au', 'year': 2023, 'income': 0}
     });
   });
 
@@ -28,7 +28,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
-      'country': 'au',
+      'input': {'country': 'au', 'year': 2023, 'income': 7500}
     });
   });
 
@@ -43,7 +43,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
-      'country': 'au',
+      'input': {'country': 'au', 'year': 2023, 'income': 40000}
     });
   });
 
@@ -58,7 +58,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
-      'country': 'au',
+      'input': {'country': 'au', 'year': 2023, 'income': 70000}
     });
   });
 
@@ -73,7 +73,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
-      'country': 'au',
+      'input': {'country': 'au', 'year': 2023, 'income': 120000}
     });
   });
 
@@ -88,7 +88,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
-      'country': 'au',
+      'input': {'country': 'au', 'year': 2023, 'income': 120001}
     });
   });
 
@@ -103,7 +103,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 5550},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
-      'country': 'au',
+      'input': {'country': 'au', 'year': 2023, 'income': 135000}
     });
   });
 
@@ -118,7 +118,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 22200},
         {'low': 180001, 'high': Infinity, 'amount': 6750},
       ],
-      'country': 'au',
+      'input': {'country': 'au', 'year': 2023, 'income': 195000}
     });
   });
 

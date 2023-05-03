@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { TaxBracket } from '../components/tax-form/tax-form.component';
 import { TaxInfo } from '../components/tax-form/tax-form.component';
 
 @Component({

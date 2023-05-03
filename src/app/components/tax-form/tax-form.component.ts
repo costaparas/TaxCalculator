@@ -17,10 +17,16 @@ export interface TaxBracket {
   amount: number;
 }
 
+export interface TaxFormValues {
+  country: string;
+  year: number;
+  income: number;
+}
+
 export interface TaxInfo {
   taxDue: number;
   taxBrackets: Array<TaxBracket>;
-  country: string;
+  input: TaxFormValues;
 }
 
 @Component({
@@ -44,13 +50,14 @@ export class TaxFormComponent implements OnInit {
   ];
 
   @Input() disabled: boolean;
+  @Input() formValues: TaxFormValues;
   @Output() taxInfo = new EventEmitter<TaxInfo>();
 
   ngOnInit() {
     this.taxForm = new FormGroup({
-      country: this.disabled ? new FormControl({'value': 'au', 'disabled': true}) : new FormControl(null, Validators.required),
-      year: this.disabled ? new FormControl({'value': 2023, 'disabled': true}) : new FormControl(null, Validators.required),
-      income: this.disabled ? new FormControl({'value': 70000, 'disabled': true}) : new FormControl(null, [Validators.required, Validators.min(0)]),
+      country: this.disabled ? new FormControl({'value': this.formValues.country, 'disabled': true}) : new FormControl(null, Validators.required),
+      year: this.disabled ? new FormControl({'value': this.formValues.year, 'disabled': true}) : new FormControl(null, Validators.required),
+      income: this.disabled ? new FormControl({'value': this.formValues.income, 'disabled': true}) : new FormControl(null, [Validators.required, Validators.min(0)]),
     });
   }
 
@@ -69,7 +76,11 @@ export class TaxFormComponent implements OnInit {
       );
     }
     const taxDue = taxBrackets.reduce((acc, current) => acc + current['amount'], 0);
-    return {'taxDue': taxDue, 'taxBrackets': taxBrackets, 'country': country};
+    return {
+      'taxDue': taxDue,
+      'taxBrackets': taxBrackets,
+      'input': {'country': country, 'year': year, 'income': income}
+    };
   }
 
   calculateTaxBracket(income: number, low: number, high: number, rate: number): number {
@@ -83,7 +94,6 @@ export class TaxFormComponent implements OnInit {
   onSubmit() {
     const data = this.taxForm.value;
     this.taxInfo.emit(this.getTaxInfo(data.country, data.year, data.income));
-    console.log("aaa");
   }
 
 }

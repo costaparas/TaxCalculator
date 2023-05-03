@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-6">
     <h1>Your tax results</h1>
-    <app-tax-form [disabled]="true"></app-tax-form>
+    <app-tax-form [disabled]="true" [formValues]="this.taxInfo.input"></app-tax-form>
     <a href="#" (click)="back()">Go back to the previous screen</a>
   </div>
   <div class="col-6">
@@ -18,6 +18,6 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div *ngIf="this.taxInfo.country === 'au'">NOTE: the above does not include the Medicare levy or surcharge.</div>
+    <div *ngIf="this.taxInfo.input.country === 'au'">NOTE: the above does not include the Medicare levy or surcharge.</div>
   </div>
 </div>
