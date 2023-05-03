@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { TaxInfo } from '../components/tax-form/tax-form.component';
+
+import { TaxInfo } from '../tax-form/tax-form.component';
 
 @Component({
   selector: 'app-tax-input',

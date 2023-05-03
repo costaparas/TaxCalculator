@@ -11,13 +11,13 @@ interface Year {
   display: string;
 }
 
-export interface TaxBracket {
+interface TaxBracket {
   low: number;
   high: number;
   amount: number;
 }
 
-export interface TaxFormValues {
+interface TaxFormValues {
   country: string;
   year: number;
   income: number;
