@@ -39,7 +39,9 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Total taxable income for the income year</mat-label>
-          <input matInput type="number" formControlName="income">
+          <input matInput type="number" placeholder="Amount" formControlName="income">
+          <span matTextPrefix>$&nbsp;</span>
+          <span matTextSuffix>.00</span>
         </mat-form-field>
       </div>
 
