@@ -15,12 +15,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaxInputComponent } from './tax-input/tax-input.component';
 import { TaxResultComponent } from './tax-result/tax-result.component';
+import { TaxFormComponent } from './components/tax-form/tax-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaxInputComponent,
     TaxResultComponent,
+    TaxFormComponent,
   ],
   imports: [
     BrowserModule,

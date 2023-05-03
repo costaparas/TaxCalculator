@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TaxBracket } from '../tax-input/tax-input.component';
+import { TaxBracket } from '../components/tax-form/tax-form.component';
 
 @Component({
   selector: 'app-tax-result',
