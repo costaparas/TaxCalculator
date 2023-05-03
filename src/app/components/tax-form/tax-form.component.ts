@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 interface Country {
@@ -17,9 +17,10 @@ export interface TaxBracket {
   amount: number;
 }
 
-interface TaxInfo {
+export interface TaxInfo {
   taxDue: number;
   taxBrackets: Array<TaxBracket>;
+  country: string;
 }
 
 @Component({
@@ -43,12 +44,13 @@ export class TaxFormComponent implements OnInit {
   ];
 
   @Input() disabled: boolean;
+  @Output() taxInfo = new EventEmitter<TaxInfo>();
 
   ngOnInit() {
     this.taxForm = new FormGroup({
-      country: new FormControl(null, Validators.required),
-      year: new FormControl(null, Validators.required),
-      income: new FormControl(null, [Validators.required, Validators.min(0)]),
+      country: this.disabled ? new FormControl({'value': 'au', 'disabled': true}) : new FormControl(null, Validators.required),
+      year: this.disabled ? new FormControl({'value': 2023, 'disabled': true}) : new FormControl(null, Validators.required),
+      income: this.disabled ? new FormControl({'value': 70000, 'disabled': true}) : new FormControl(null, [Validators.required, Validators.min(0)]),
     });
   }
 
@@ -67,7 +69,7 @@ export class TaxFormComponent implements OnInit {
       );
     }
     const taxDue = taxBrackets.reduce((acc, current) => acc + current['amount'], 0);
-    return {'taxDue': taxDue, 'taxBrackets': taxBrackets};
+    return {'taxDue': taxDue, 'taxBrackets': taxBrackets, 'country': country};
   }
 
   calculateTaxBracket(income: number, low: number, high: number, rate: number): number {
@@ -80,7 +82,8 @@ export class TaxFormComponent implements OnInit {
 
   onSubmit() {
     const data = this.taxForm.value;
-    console.log(this.getTaxInfo(data.country, data.year, data.income));
+    this.taxInfo.emit(this.getTaxInfo(data.country, data.year, data.income));
+    console.log("aaa");
   }
 
 }

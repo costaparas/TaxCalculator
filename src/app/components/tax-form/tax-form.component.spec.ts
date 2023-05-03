@@ -13,6 +13,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
+      'country': 'au',
     });
   });
 
@@ -27,6 +28,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
+      'country': 'au',
     });
   });
 
@@ -41,6 +43,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
+      'country': 'au',
     });
   });
 
@@ -55,6 +58,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
+      'country': 'au',
     });
   });
 
@@ -69,6 +73,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
+      'country': 'au',
     });
   });
 
@@ -83,6 +88,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 0},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
+      'country': 'au',
     });
   });
 
@@ -97,6 +103,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 5550},
         {'low': 180001, 'high': Infinity, 'amount': 0},
       ],
+      'country': 'au',
     });
   });
 
@@ -111,6 +118,7 @@ describe('TaxFormComponent', () => {
         {'low': 120001, 'high': 180000, 'amount': 22200},
         {'low': 180001, 'high': Infinity, 'amount': 6750},
       ],
+      'country': 'au',
     });
   });
 

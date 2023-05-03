@@ -4,11 +4,6 @@
   </div>
   <div class="col-6">
     <h1>Calculate your income tax</h1>
-    <mat-toolbar>
-      <span class="material-symbols-outlined">info</span>
-      <span>Fields marked with * are mandatory</span>
-    </mat-toolbar>
-    <hr>
-    <app-tax-form [disabled]="false"></app-tax-form>
+    <app-tax-form [disabled]="false" (taxInfo)="emitTaxInfo($event)"></app-tax-form>
   </div>
 </div>

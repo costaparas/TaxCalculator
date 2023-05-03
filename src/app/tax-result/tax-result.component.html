@@ -1,16 +1,15 @@
 <div class="row">
   <div class="col-6">
     <h1>Your tax results</h1>
-    <hr>
     <app-tax-form [disabled]="true"></app-tax-form>
     <a href="#" (click)="back()">Go back to the previous screen</a>
   </div>
   <div class="col-6">
     Estimated tax on your taxable income:
-    <mat-toolbar>{{ 999999999 | currency }}</mat-toolbar>
+    <mat-toolbar>{{ this.taxInfo.taxDue | currency }}</mat-toolbar>
     <hr>
     Breakdown:
-    <div *ngFor="let bracket of this.taxBrackets; let last = last">
+    <div *ngFor="let bracket of this.taxInfo.taxBrackets; let last = last">
       <mat-card class="card">
         <mat-card-header>Tax Bracket<div class="fill"></div>{{ bracket.amount | currency }}</mat-card-header>
         <mat-card-content>
@@ -19,6 +18,6 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div *ngIf="this.country === 'au'">NOTE: the above does not include the Medicare levy or surcharge.</div>
+    <div *ngIf="this.taxInfo.country === 'au'">NOTE: the above does not include the Medicare levy or surcharge.</div>
   </div>
 </div>

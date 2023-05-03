@@ -18,4 +18,9 @@ mat-form-field {
   width: 100%;
 }
 
+.col-6 {
+  display: table;
+  margin: auto;
+}
+
 @import "bootstrap/dist/css/bootstrap.min.css";

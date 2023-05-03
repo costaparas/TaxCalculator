@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { TaxInfo } from './components/tax-form/tax-form.component';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
 
+  taxInfo?: TaxInfo;
+
   ngOnInit() {
 
+  }
+
+  showResult(taxInfo: TaxInfo) {
+    this.taxInfo = taxInfo;
+  }
+
+  reload(event: any) {
+    this.taxInfo = undefined;
   }
 
 }
