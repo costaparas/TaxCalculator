@@ -24,10 +24,15 @@ interface TaxFormValues {
   privateHealth: boolean;
 }
 
+interface MedicareLevy {
+  amount: number;
+  rate: number;
+}
+
 export interface TaxInfo {
   taxDue: number;
-  medicareLevyBase: number;
-  medicareLevySurcharge: number;
+  medicareLevyBase: MedicareLevy;
+  medicareLevySurcharge: MedicareLevy;
   taxBrackets: Array<TaxBracket>;
   input: TaxFormValues;
 }
@@ -82,7 +87,9 @@ export class TaxFormComponent implements OnInit {
     const baseTax = taxBrackets.reduce((acc, current) => acc + current['amount'], 0);
 
     // TODO: calculations
+    const medicareLevyBaseRate = 0;
     const medicareLevyBase = 0;
+    const medicareLevySurchargeRate = 0;
     const medicareLevySurcharge = 0;
 
     const taxDue = baseTax + medicareLevyBase + medicareLevySurcharge;
@@ -90,8 +97,8 @@ export class TaxFormComponent implements OnInit {
     return {
       'taxDue': taxDue,
       'taxBrackets': taxBrackets,
-      'medicareLevyBase': medicareLevyBase,
-      'medicareLevySurcharge': medicareLevySurcharge,
+      'medicareLevyBase': {'amount': medicareLevyBase, 'rate': medicareLevyBaseRate},
+      'medicareLevySurcharge': {'amount': medicareLevySurcharge, 'rate': medicareLevySurchargeRate},
       'input': {'country': country, 'year': year, 'income': income, 'privateHealth': privateHealth}
     };
   }
