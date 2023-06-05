@@ -21,10 +21,13 @@ interface TaxFormValues {
   country: string;
   year: number;
   income: number;
+  privateHealth: boolean;
 }
 
 export interface TaxInfo {
   taxDue: number;
+  medicareLevyBase: number;
+  medicareLevySurcharge: number;
   taxBrackets: Array<TaxBracket>;
   input: TaxFormValues;
 }
@@ -58,11 +61,12 @@ export class TaxFormComponent implements OnInit {
       country: this.disabled ? new FormControl({'value': this.formValues.country, 'disabled': true}) : new FormControl(null, Validators.required),
       year: this.disabled ? new FormControl({'value': this.formValues.year, 'disabled': true}) : new FormControl(null, Validators.required),
       income: this.disabled ? new FormControl({'value': this.formValues.income, 'disabled': true}) : new FormControl(null, [Validators.required, Validators.min(0)]),
+      privateHealth: this.disabled ? new FormControl({'value': this.formValues.privateHealth, 'disabled': true}) : new FormControl(),
     });
   }
 
-  getTaxInfo(country: string, year: number, income: number): TaxInfo {
-    // NOTE: the country and year is ignored for now
+  getTaxInfo(country: string, year: number, income: number, privateHealth: boolean): TaxInfo {
+    // FIXME: the country and year is ignored for now
     const taxBrackets = [];
     for (const {low, high, rate} of [
       {'low': 0, 'high': 18200, 'rate': 0},
@@ -75,15 +79,27 @@ export class TaxFormComponent implements OnInit {
         {'low': low, 'high': high, 'amount': this.calculateTaxBracket(income, low, high, rate)}
       );
     }
-    const taxDue = taxBrackets.reduce((acc, current) => acc + current['amount'], 0);
+    const baseTax = taxBrackets.reduce((acc, current) => acc + current['amount'], 0);
+
+    // TODO: calculations
+    const medicareLevyBase = 0;
+    const medicareLevySurcharge = 0;
+
+    const taxDue = baseTax + medicareLevyBase + medicareLevySurcharge;
+
     return {
       'taxDue': taxDue,
       'taxBrackets': taxBrackets,
-      'input': {'country': country, 'year': year, 'income': income}
+      'medicareLevyBase': medicareLevyBase,
+      'medicareLevySurcharge': medicareLevySurcharge,
+      'input': {'country': country, 'year': year, 'income': income, 'privateHealth': privateHealth}
     };
   }
 
   calculateTaxBracket(income: number, low: number, high: number, rate: number): number {
+    // Case 1: Income is inside the bracket => we multiply it by the rate
+    // Case 2: Income is above the bracket => we multiply it by the high boundary of the bracket
+    // Case 3: Income is below the bracket => zero
     if (income >= low) {
       return Math.round(rate * (Math.min(income, high) - low));
     } else {
@@ -93,7 +109,7 @@ export class TaxFormComponent implements OnInit {
 
   onSubmit() {
     const data = this.taxForm.value;
-    this.taxInfo.emit(this.getTaxInfo(data.country, data.year, data.income));
+    this.taxInfo.emit(this.getTaxInfo(data.country, data.year, data.income, data.privateHealth));
   }
 
 }

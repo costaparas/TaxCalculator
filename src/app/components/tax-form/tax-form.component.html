@@ -37,5 +37,9 @@
     </mat-form-field>
   </div>
 
+  <div>
+    <p><mat-checkbox formControlName="privateHealth">Private Health Cover?</mat-checkbox></p>
+  </div>
+
   <button *ngIf="!this.disabled" mat-raised-button color="primary" type="submit" [disabled]="taxForm.invalid">Calculate</button>
 </form>
