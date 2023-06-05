@@ -4,7 +4,7 @@ An easy-to-use tax calculator, implemented using Angular 15.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
 
-# Setup
+## Setup
 
 Run `npm install` to install the required packages.
 
