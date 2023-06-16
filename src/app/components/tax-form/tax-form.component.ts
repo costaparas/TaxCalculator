@@ -86,11 +86,25 @@ export class TaxFormComponent implements OnInit {
     }
     const baseTax = taxBrackets.reduce((acc, current) => acc + current['amount'], 0);
 
-    // TODO: calculations
-    const medicareLevyBaseRate = 0;
-    const medicareLevyBase = 0;
-    const medicareLevySurchargeRate = 0;
-    const medicareLevySurcharge = 0;
+    // FIXME: levies hard-coded for the 2023 tax year
+    let medicareLevyBaseRate = 0;
+    let medicareLevyBase = 0;
+    if (income > 24276) {
+      medicareLevyBaseRate = 2;
+      medicareLevyBase = income * medicareLevyBaseRate / 100;
+    }
+    let medicareLevySurchargeRate = 0;
+    let medicareLevySurcharge = 0;
+    if (!privateHealth) {
+      if (income >= 140001) {
+        medicareLevySurchargeRate = 1.5;
+      } else if (income >= 105001) {
+        medicareLevySurchargeRate = 1.25;
+      } else if (income >= 90001) {
+        medicareLevySurchargeRate = 1;
+      } // else 0%
+      medicareLevySurcharge = income * medicareLevySurchargeRate / 100;
+    }
 
     const taxDue = baseTax + medicareLevyBase + medicareLevySurcharge;
 
