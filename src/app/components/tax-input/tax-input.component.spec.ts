@@ -15,7 +15,7 @@ describe('TaxInputComponent', () => {
     const fixture = TestBed.createComponent(TaxInputComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Calculate your income tax');
+    expect(compiled.querySelector('h1').textContent).toContain('Calculate your individual income tax');
   });
 
 });
